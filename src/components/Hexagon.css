@@ -1,0 +1,17 @@
+.b{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.pp{
+    text-align: center;
+}
+.button{
+    margin: 10px;
+    padding: 10px;
+}
+.bigbox{
+    max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
