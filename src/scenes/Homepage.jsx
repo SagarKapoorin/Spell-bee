@@ -10,7 +10,7 @@ function Homepage() {
     const [backgroundColor, setBackgroundColor] = useState('white');
     const [textColor, setTextColor] = useState('black');
     const [feedback, setFeedback] = useState("");
-    const [timer, setTimer] = useState(30);
+    const [timer, setTimer] = useState(60);
     const increment = useRef(null);
     const dispatch = useDispatch();
     const score = useSelector((state) => state.score);
