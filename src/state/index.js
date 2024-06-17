@@ -38,12 +38,14 @@ export const authSlice = createSlice({
       state.level+=1;
     },
     setResetScore: (state) => {
+      console.log("yes");
       state.score=0;
     },
     setString:(state,action)=>{
+
         // console.log(action.payload.char);
         state.string+=action.payload.char;
-        // console.log(state.string);
+        console.log(state.string);
     },
     setResetString:(state)=>{
         state.string='';

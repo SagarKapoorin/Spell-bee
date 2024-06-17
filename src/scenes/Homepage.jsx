@@ -1,34 +1,17 @@
-import { Box, InputBase, IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useEffect, useState } from "react";
 import { useWordChecker } from 'react-word-checker';
 import Hexagon from "../components/Hexagon";
 import Navbar from "./Navbar";
 import { setDeleteString, setLevel, setResetScore, setResetString, setScore } from "../state";
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import StartRoundedIcon from '@mui/icons-material/StartRounded';
 
 function Homepage() {
     const [backgroundColor, setBackgroundColor] = useState('white');
     const [textColor, setTextColor] = useState('black');
     const [feedback, setFeedback] = useState("");
-    const [timer, setTimer] = useState(60);
+    const [timer, setTimer] = useState(30);
     const increment = useRef(null);
-
-    useEffect(() => {
-        increment.current = setInterval(() => {
-            setTimer((timer) => {
-                if (timer > 0) return timer - 1;
-                clearInterval(increment.current);
-                if (timer === 0) {
-                    alert("Game Over Your Score is : " + score);
-                }
-                return timer;
-            });
-        }, 1000);
-        return () => clearInterval(increment.current);
-    }, []);
-
     const dispatch = useDispatch();
     const score = useSelector((state) => state.score);
     const level = useSelector((state) => state.level);
@@ -37,6 +20,22 @@ function Homepage() {
     const [foundWords, setFoundWords] = useState([]);
     const nextLevel = useSelector((state) => state.points[level]);
     const hexagons = useSelector((state) => state.hexagons[level]);
+
+    useEffect(() => {
+        increment.current = setInterval(() => {
+            setTimer((timer) => {
+                if (timer > 0) return timer - 1;
+                clearInterval(increment.current);
+                if (timer === 0 && score!=0 && string!=="") {
+                    alert("Game Over Your Score is : " + score);
+                    dispatch(setResetScore());
+                    dispatch(setResetString());
+                }
+                return timer;
+            });
+        }, 1000);
+        return () => clearInterval(increment.current);
+    }, [score, dispatch]);
 
     useEffect(() => {
         if (score >= nextLevel) {
@@ -91,10 +90,12 @@ function Homepage() {
             setTextColor('black');
         }, 2000);
     };
-    const next=()=>{
+
+    const next = () => {
         dispatch(setLevel());
-        dispatch(setScore({score: -2}));
-    }
+        dispatch(setScore({ score: score >= 2 ? -2 : 0 }));
+    };
+
     return (
         <>
             <Navbar />
@@ -105,7 +106,7 @@ function Homepage() {
             <div className="upper_part">
                 <p className="timer">{timer}</p>
                 <p className="current_word" style={{ backgroundColor, color: textColor }}>{string}</p>
-                <IconButton className="next" onClick={() =>next() }>Next</IconButton>
+                <IconButton className="next" onClick={next}>Next</IconButton>
             </div>
             <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
                 <Box display="flex">
@@ -117,7 +118,7 @@ function Homepage() {
                     <Hexagon {...hexagons[6]} />
                     <Hexagon {...hexagons[2]} />
                 </Box>
-                <Box display="flex"  marginTop='-25px'>
+                <Box display="flex" marginTop='-25px'>
                     <Hexagon {...hexagons[4]} />
                     <Hexagon {...hexagons[3]} />
                 </Box>
