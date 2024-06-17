@@ -37,12 +37,6 @@ function Homepage() {
         return () => clearInterval(increment.current);
     }, [score, dispatch]);
 
-    useEffect(() => {
-        if (score >= nextLevel) {
-            setFoundWords([]);
-            dispatch(setLevel());
-        }
-    }, [score, nextLevel, dispatch]);
 
     const resetString = () => {
         dispatch(setResetString());
@@ -92,6 +86,7 @@ function Homepage() {
     };
 
     const next = () => {
+        dispatch(setResetString());
         dispatch(setLevel());
         dispatch(setScore({ score: score >= 2 ? -2 : 0 }));
     };
