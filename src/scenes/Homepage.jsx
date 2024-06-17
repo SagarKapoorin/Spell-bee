@@ -54,7 +54,6 @@ function Homepage() {
             setFeedbackMessage(`Missing Special Letter: ${specialLetter}`, 'red', 'white');
             return;
         }
-
         if (foundWords.includes(string)) {
             setFeedbackMessage("Already Found", 'yellow', 'white');
             return;
