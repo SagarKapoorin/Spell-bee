@@ -2,16 +2,75 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    font-weight: 600;
+    transition:ease-in-out;
+}
+*{
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+.upper_part button{
+    border-radius: 20px;
+    border:2px solid black;
+    font-size: 25px;
+
+    padding: 10px;
+    border-radius: 20px;
+}
+.check_button{
+    font-size: 25px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border:2px solid black;
+   background-color: transparent;
+   margin-left:37%;
+}
+.current_word{
+    border: 1.5px solid black;
+    border-radius: 19px;
+    text-align: center;
+    padding: 0.1rem 1.5rem;
+    width:120px;
+    height:40px;
+    overflow-x:scroll;
+}
+.upper_part{
+    font-size: 30px;
+}
+.timer{
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+    border:2px solid black;
+    text-align: center;
+    padding-top: 9px;
+}
+.upper_part{
+    align-items: center;
+    display: flex;
+   gap: 39px;
+   margin-bottom: 15px;
 }
 .pp{
     text-align: center;
 }
+.score{
+    font-size: 40px;
+    text-align: center;
+    margin:0px;
+   
+}
 .button{
+    font-size: 25px;
     margin: 10px;
     padding: 10px;
+    border-radius: 20px;
+    border:2px solid black;
+   background-color: transparent;
 }
 .bigbox{
     max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
 }

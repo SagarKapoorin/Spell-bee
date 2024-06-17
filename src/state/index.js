@@ -31,9 +31,10 @@ export const authSlice = createSlice({
     setScore: (state,action) => {
         
       state.score+=action.payload.score;
-      console.log(state.score);
+      // console.log(state.score);
     },
     setLevel: (state) => {
+      console.log(state.level);
       state.level+=1;
     },
     setResetScore: (state) => {

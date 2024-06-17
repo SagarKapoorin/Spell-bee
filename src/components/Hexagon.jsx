@@ -5,10 +5,10 @@ import './Hexagon.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { setString } from '../state';
 const HexagonBox = styled(Box)(({ bgcolor }) => ({
-    width: '70px',
-    height: '70px',
+    width: '125px',
+    height: '125px',
     display: 'flex',
-  
+    fontSize:'20px',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: bgcolor || '#e4eaf3',
@@ -23,14 +23,18 @@ const InnerBox = styled(Box)(({ color }) => ({
   const Hexagon = ({ letter, bgcolor, color }) => {
     const dispatch = useDispatch();
     const currentString = useSelector((state) => state.string);  
- 
+    const [fontSize,setFont]=useState('45px');
     const add=(letter)=>{
+      setFont('70px');
+      setTimeout(()=>{
+setFont('45px');
+      },1000);
       dispatch(setString({char:letter}));
       console.log(currentString);
     }
     return (
       <HexagonBox bgcolor={bgcolor}>
-                  <button  className='b' onClick={()=>{
+                  <button  className='b' style={{fontSize:`${fontSize}`}} onClick={()=>{
             add(letter);
           }}>
         <InnerBox color={color}>
