@@ -33,6 +33,9 @@ export const authSlice = createSlice({
       state.score+=action.payload.score;
       // console.log(state.score);
     },
+    setResetLevel:(state)=>{
+      state.level=0;
+    },
     setLevel: (state) => {
       console.log(state.level);
       state.level+=1;
@@ -75,6 +78,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setScore,setLevel,setResetScore , setString , setResetString , setDeleteString ,setShuffleHexagon} =
+export const { setScore,setLevel,setResetScore , setResetLevel , setString , setResetString , setDeleteString ,setShuffleHexagon} =
   authSlice.actions;
 export default authSlice.reducer;

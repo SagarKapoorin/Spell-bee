@@ -4,8 +4,10 @@ import { useRef, useEffect, useState } from "react";
 import { useWordChecker } from 'react-word-checker';
 import Hexagon from "../components/Hexagon";
 import Navbar from "./Navbar";
+import ReactDOM from 'react-dom';
+import Confetti from 'react-confetti';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import { setDeleteString, setLevel, setResetScore, setResetString, setScore, setShuffleHexagon } from "../state";
+import { setDeleteString, setLevel, setResetLevel, setResetScore, setResetString, setScore, setShuffleHexagon  } from "../state";
                            
 function Homepage() {
     const [backgroundColor, setBackgroundColor] = useState('white');
@@ -32,6 +34,7 @@ function Homepage() {
                     alert("Game Over Your Score is : " + score);
                     dispatch(setResetScore());
                     dispatch(setResetString());
+                    dispatch(setResetLevel());
                 }
                 return timer;
             });
@@ -91,7 +94,21 @@ function Homepage() {
         dispatch(setLevel());
         dispatch(setScore({ score: score >= 2 ? -2 : 0 }));
     };
-    
+    useEffect(()=>{
+        if (feedback === "Great Job!") {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.id = "confetti-container";
+            document.body.appendChild(confettiContainer);
+            ReactDOM.render(<Confetti id="theid" />, confettiContainer);
+      
+            setTimeout(() => {
+              ReactDOM.unmountComponentAtNode(confettiContainer);
+              document.body.removeChild(confettiContainer);
+            }, 3000);
+      
+           
+          }
+    },[feedback]);
     const resetLetters=()=>{
        dispatch(setShuffleHexagon());
 }
@@ -99,10 +116,12 @@ function Homepage() {
         <>
             <Navbar />
             <p className="score">Score: {score}</p>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30px', marginTop: '5px' }}>
+            <div  className="confetti" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30px', marginTop: '5px' }}>
                 <p style={{ color: backgroundColor, fontWeight: 700, fontSize: '25px' }}>{feedback}</p>
+               
+                
             </div>
-            
+
             <div className="upper_part">
                 <p className="timer">{timer}</p>
                 <p className="current_word" style={{ backgroundColor, color: textColor }}>{string}</p>
