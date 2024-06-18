@@ -34,7 +34,7 @@ function Homepage() {
                 }
                 return timer;
             });
-        }, 200);
+        }, 1000);
         return () => clearInterval(increment.current);
     }, [score, dispatch]);
 

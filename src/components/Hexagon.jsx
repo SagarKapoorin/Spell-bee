@@ -28,7 +28,7 @@ const InnerBox = styled(Box)(({ color }) => ({
       setFont('70px');
       setTimeout(()=>{
 setFont('45px');
-      },200);
+      },150);
       dispatch(setString({char:letter}));
       console.log(currentString);
     }

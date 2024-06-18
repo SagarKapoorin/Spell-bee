@@ -4,6 +4,12 @@
     cursor: pointer;
     font-weight: 600;
     transition:ease-in-out;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
   
