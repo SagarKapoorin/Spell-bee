@@ -54,10 +54,27 @@ export const authSlice = createSlice({
         if(state.string !== ''){
             state.string=state.string.substring(0,state.string.length-1);
         }
+    },
+    setShuffleHexagon:(state,action)=>{
+      state.hexagons.forEach(row => {
+        const nonYellowCells = row.filter(cell => !cell.bgcolor || cell.bgcolor !== 'yellow');
+        const yellowCells = row.filter(cell => cell.bgcolor && cell.bgcolor === 'yellow');
+        nonYellowCells.sort(() => Math.random() - 0.5);
+        let index = 0;
+        row.forEach((cell, i) => {
+          if (cell.bgcolor === 'yellow') {
+            row[i] = yellowCells[index];
+            index++;
+          } else {
+            row[i] = nonYellowCells.shift();
+          }
+        });
+      });
+   
     }
   },
 });
 
-export const { setScore,setLevel,setResetScore , setString , setResetString , setDeleteString} =
+export const { setScore,setLevel,setResetScore , setString , setResetString , setDeleteString ,setShuffleHexagon} =
   authSlice.actions;
 export default authSlice.reducer;

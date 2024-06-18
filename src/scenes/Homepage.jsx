@@ -4,7 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import { useWordChecker } from 'react-word-checker';
 import Hexagon from "../components/Hexagon";
 import Navbar from "./Navbar";
-import { setDeleteString, setLevel, setResetScore, setResetString, setScore } from "../state";
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { setDeleteString, setLevel, setResetScore, setResetString, setScore, setShuffleHexagon } from "../state";
                            
 function Homepage() {
     const [backgroundColor, setBackgroundColor] = useState('white');
@@ -90,7 +91,10 @@ function Homepage() {
         dispatch(setLevel());
         dispatch(setScore({ score: score >= 2 ? -2 : 0 }));
     };
-
+    
+    const resetLetters=()=>{
+       dispatch(setShuffleHexagon());
+}
     return (
         <>
             <Navbar />
@@ -120,6 +124,7 @@ function Homepage() {
             </Box>
             <div className="bigbox">
                 <button className="button" onClick={timer!=0?resetString:console.log("")}>Reset</button>
+                <button className="button" onClick={resetLetters}><RestartAltIcon/></button>
                 <button className="button" onClick={timer!=0?deleteString:console.log("")}>Delete</button>
             </div>
             <button className="check_button" onClick={timer!=0?checkWord:console.log("")}>Check</button>
