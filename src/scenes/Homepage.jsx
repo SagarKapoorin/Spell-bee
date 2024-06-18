@@ -26,14 +26,15 @@ function Homepage() {
             setTimer((timer) => {
                 if (timer > 0) return timer - 1;
                 clearInterval(increment.current);
-                if (timer === 0 && score!=0 && string !=="") {
+                console.log(string!=="");
+                if (timer === 0  && (string !=="" || score!=0)) {
                     alert("Game Over Your Score is : " + score);
                     dispatch(setResetScore());
                     dispatch(setResetString());
                 }
                 return timer;
             });
-        }, 1000);
+        }, 200);
         return () => clearInterval(increment.current);
     }, [score, dispatch]);
 
