@@ -26,7 +26,7 @@ function Homepage() {
             setTimer((timer) => {
                 if (timer > 0) return timer - 1;
                 clearInterval(increment.current);
-                if (timer === 0) {
+                if (timer === 0 && score!=0 && string !=="") {
                     alert("Game Over Your Score is : " + score);
                     dispatch(setResetScore());
                     dispatch(setResetString());
