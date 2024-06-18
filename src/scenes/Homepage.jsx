@@ -5,7 +5,7 @@ import { useWordChecker } from 'react-word-checker';
 import Hexagon from "../components/Hexagon";
 import Navbar from "./Navbar";
 import { setDeleteString, setLevel, setResetScore, setResetString, setScore } from "../state";
-
+                           
 function Homepage() {
     const [backgroundColor, setBackgroundColor] = useState('white');
     const [textColor, setTextColor] = useState('black');
