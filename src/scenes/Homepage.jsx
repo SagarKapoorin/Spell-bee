@@ -118,10 +118,10 @@ function Homepage() {
                 </Box>
             </Box>
             <div className="bigbox">
-                <button className="button" onClick={resetString}>Reset</button>
-                <button className="button" onClick={deleteString}>Delete</button>
+                <button className="button" onClick={timer!=0?resetString:console.log("")}>Reset</button>
+                <button className="button" onClick={timer!=0?deleteString:console.log("")}>Delete</button>
             </div>
-            <button className="check_button" onClick={checkWord}>Check</button>
+            <button className="check_button" onClick={timer!=0?checkWord:console.log("")}>Check</button>
         </>
     );
 }
