@@ -28,13 +28,12 @@
     border-radius: 20px;
 }
 .check_button{
-    font-size: 25px;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 20px;
-    border:2px solid black;
-   background-color: transparent;
-   margin-left:37%;
+    font-size: 20px !important;
+    margin: 5px !important;
+    background-color: black !important;
+    ;
+    margin-top: 20px !important;
+   margin-left:37% !important;
 }
 .current_word{
     border: 3px solid black;
@@ -72,16 +71,15 @@
    
 }
 .button{
-    font-size: 25px;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 20px;
-    border:2px solid black;
-   background-color: transparent;
+    font-size: 20px !important;
+    margin: 5px !important;
+    background-color: black !important;
+   
 }
 .bigbox{
     max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  gap: 50px;
 }

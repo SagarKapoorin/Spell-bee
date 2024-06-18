@@ -37,7 +37,7 @@ const Navbar = () => {
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
           color="yellow"
-         
+         className="Logo_text"
         
           sx={{
             "&:hover": {

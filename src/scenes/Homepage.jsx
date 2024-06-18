@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useEffect, useState } from "react";
 import { useWordChecker } from 'react-word-checker';
@@ -102,11 +102,13 @@ function Homepage() {
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '30px', marginTop: '5px' }}>
                 <p style={{ color: backgroundColor, fontWeight: 700, fontSize: '25px' }}>{feedback}</p>
             </div>
+            
             <div className="upper_part">
                 <p className="timer">{timer}</p>
                 <p className="current_word" style={{ backgroundColor, color: textColor }}>{string}</p>
-                <IconButton className="next" onClick={next}>Next</IconButton>
+                <Button variant="contained" className="button" onClick={next}>Next</Button>
             </div>
+
             <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
                 <Box display="flex">
                     <Hexagon {...hexagons[0]} />
@@ -123,11 +125,11 @@ function Homepage() {
                 </Box>
             </Box>
             <div className="bigbox">
-                <button className="button" onClick={timer!=0?resetString:console.log("")}>Reset</button>
-                <button className="button" onClick={resetLetters}><RestartAltIcon/></button>
-                <button className="button" onClick={timer!=0?deleteString:console.log("")}>Delete</button>
+                <Button variant="contained"  className="button" onClick={timer!=0?resetString:console.log("")}>Reset</Button>
+                <Button variant="contained"  className="button" onClick={resetLetters}><RestartAltIcon/></Button>
+                <Button variant="contained"  className="button" onClick={timer!=0?deleteString:console.log("")}>Delete</Button>
             </div>
-            <button className="check_button" onClick={timer!=0?checkWord:console.log("")}>Check</button>
+            <Button variant="contained" className="check_button" onClick={timer!=0?checkWord:console.log("")}>Check</Button>
         </>
     );
 }
