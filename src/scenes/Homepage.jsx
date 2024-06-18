@@ -1,4 +1,4 @@
-import { Box, Button, IconButton } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useRef, useEffect, useState } from "react";
 import { useWordChecker } from 'react-word-checker';
@@ -76,6 +76,10 @@ function Homepage() {
         } else {
             setFeedbackMessage("Word Length is Less Than 3", 'red', 'white');
         }
+        setTimeout(()=>{
+            dispatch(setResetString());
+        },2000)
+        
     };
 
     const setFeedbackMessage = (message, bgColor, txtColor) => {
