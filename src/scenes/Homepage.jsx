@@ -25,11 +25,18 @@ function Homepage() {
     const hexagons = useSelector((state) => state.hexagons[level]);
 
     useEffect(() => {
+        if(timer===60){
+            dispatch(setResetScore());
+            dispatch(setResetLevel());
+        }
         increment.current = setInterval(() => {
+           
             setTimer((timer) => {
                 if (timer > 0) return timer - 1;
                 clearInterval(increment.current);
-                console.log(string!=="");
+                
+             
+                
                 if (timer === 0  && (string !=="" || score!=0)) {
                     alert("Game Over Your Score is : " + score);
                     dispatch(setResetScore());
