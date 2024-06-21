@@ -74,7 +74,7 @@ function Homepage() {
             setFeedbackMessage(`Missing Special Letter: ${specialLetter}`, 'red', 'white');
             setTimeout(() => {
                 dispatch(setResetString());
-            }, 2000)
+            }, 500)
             return;
         }
         if (foundWords.includes(string)) {
@@ -96,7 +96,7 @@ function Homepage() {
         }
         setTimeout(() => {
             dispatch(setResetString());
-        }, 2000)
+        }, 500)
     };
 
     const setFeedbackMessage = (message, bgColor, txtColor) => {
@@ -107,7 +107,7 @@ function Homepage() {
             setFeedback("");
             setBackgroundColor('white');
             setTextColor('black');
-        }, 2000);
+        }, 500);
     };
 
     const next = () => {
@@ -126,7 +126,7 @@ function Homepage() {
             setTimeout(() => {
                 ReactDOM.unmountComponentAtNode(confettiContainer);
                 document.body.removeChild(confettiContainer);
-            }, 3000);
+            }, 1800);
         }
     }, [feedback]);
 
