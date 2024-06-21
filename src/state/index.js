@@ -4,6 +4,8 @@ const initialState = {
 level:0,
 score:0,
 string:'',
+prev:[],
+
 hexagons : [[
     { letter: 'G' },
     { letter: 'O' },
@@ -45,8 +47,6 @@ export const authSlice = createSlice({
       state.score=0;
     },
     setString:(state,action)=>{
-
-        // console.log(action.payload.char);
         state.string+=action.payload.char;
         console.log(state.string);
     },
@@ -57,6 +57,12 @@ export const authSlice = createSlice({
         if(state.string !== ''){
             state.string=state.string.substring(0,state.string.length-1);
         }
+    },
+    setpostionreset:(state,action)=>{
+      state.prev=[];
+    },
+    setpostion:(state,action)=>{
+      state.prev=[...state.prev,action.payload];
     },
     setShuffleHexagon:(state,action)=>{
       state.hexagons.forEach(row => {
@@ -78,6 +84,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setScore,setLevel,setResetScore , setResetLevel , setString , setResetString , setDeleteString ,setShuffleHexagon} =
+export const { setScore,setLevel,setResetScore ,setpostion ,setpostionreset , setResetLevel , setString , setResetString , setDeleteString ,setShuffleHexagon} =
   authSlice.actions;
 export default authSlice.reducer;
